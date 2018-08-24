@@ -42,7 +42,8 @@ function addSelectedItemToCart() {
   var items = document.getElementById('items').value;
 
   cart.addItem(items, quantity);
-
+  alert('Your Item has been added to the Cart!')
+  document.getElementById('catalog').reset();
 
 
   // TODO: suss out the item picked from the select list
@@ -52,11 +53,35 @@ function addSelectedItemToCart() {
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {
+  localStorage.cartCount = cart.items.length;
+  var textThings = localStorage.cartCount;
+  document.getElementById('itemCount').textContent = `${textThings} Items in Cart.`;
 
 }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
+  var totalPreview = document.getElementById('cartContents');
+  var previewList = document.createElement('OL');
+
+  totalPreview.innerHTML = '';
+
+  previewList.textContent = 'Preview List:'
+
+  for (var i = 0; i < cart.items.length; i++) {
+  var listLoop = document.createElement('LI');
+  listLoop.textContent = `${cart.items[i].product}: ${cart.items[i].quantity}`;
+  previewList.appendChild(listLoop);
+  totalPreview.appendChild(previewList);
+}
+
+var link = document.createElement('A');
+var linkText = document.createTextNode('THANKS FOR SUBMITTING. CLICK HERE TO GO TO CART');
+link.appendChild(linkText);
+link.href = 'cart.html';
+previewList.appendChild(link);
+totalPreview.appendChild(previewList);
+
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
 }

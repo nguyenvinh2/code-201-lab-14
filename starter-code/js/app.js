@@ -7,7 +7,9 @@ var Cart = function(items) {
 };
 
 Cart.prototype.addItem = function(product, quantity) {
-this.items.push(new CartItem(product,quantity));
+  if (quantity > 0 && quantity.length > 0){
+  cart.items.push(new CartItem(product,quantity));
+}
 
 
 
@@ -21,6 +23,10 @@ Cart.prototype.saveToLocalStorage = function() {
 };
 
 Cart.prototype.removeItem = function(item) {
+  console.log(cart.items);
+
+  cart.items.splice(item, 1);
+  console.log(cart);
   // TODO: Fill in this instance method to remove one item from the cart.
   // Note: You will have to decide what kind of parameter to pass in here!
 };
