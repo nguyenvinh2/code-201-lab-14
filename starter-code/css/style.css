@@ -1,1 +1,51 @@
 /* TODO: Make it awesome */
+header {
+  background-color: grey;
+  width: 100%;
+  height: 50px;
+}
+
+header h1 {
+  float: left;
+  padding: 20px 20px;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+nav {
+  float: right;
+  text-align: center;
+  padding: 20px 20px;
+  color: darkgreen;
+}
+
+
+nav li {
+  display: inline-block;
+  font-size: 40px;
+}
+nav li a {
+  text-decoration: none;
+  margin-right: 10px;
+  color: black;
+}
+
+nav li a:hover {
+  background-color: black;
+  color: grey;
+}
+
+
+main section div header h1 {
+  clear: both;
+  background-color: none;
+  float: none;
+  padding: none;
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+
+.copy {
+  clear: both;
+}
