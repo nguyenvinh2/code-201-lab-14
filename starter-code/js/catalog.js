@@ -16,7 +16,6 @@ function populateForm() {
       selectElement.appendChild(optionElement);
     }
 }
-
 // When someone submits the form, we need to add the selected item to the cart
 // object, save the whole thing back to local storage and update the screen
 // so that it shows the # of items in the cart and a quick preview of the cart itself.
@@ -28,30 +27,33 @@ function handleSubmit(event) {
   cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
-
 }
 
-// TODO: Add the selected item and quantity to the cart
+//Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
-  cart.quanity = document.getElementById('quantity');
-  cart.name = this.Product.allProducts.name;
+  // suss out the item picked from the select list
+  // get the quantity
+  // using those, add one item to the Cart
+  var selectedItem = event.target.items.value;
+  var selectedQuantity = event.target.quantity.value;
 
-  for(var i = 0; i < Product.allProducts.length; i++) {
-    if(this.Product.allProducts.name === Product.allProducts[i].name)
-    localStorage.setItem('Cart', JSON.stringify(Product.allProducts))
-  }
-  
-  // TODO: suss out the item picked from the select list
-  // TODO: get the quantity
-  // TODO: using those, add one item to the Cart
+  cart.addItem(selectedItem, selectedQuantity);
+
+  console.log(selectedItem, selectedQuantity);
 }
+// Update the cart count in the header nav with the number of items in the Cart
+var itemCounter = 0;
 
-// TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() {
+  var countEl = document.getElementById('itemCount');
+  countEl.textContent(itemCounter);
+  itemCounter++;
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
+  var itemQuantity = event.target.items.quantity;
   // TODO: Add a new element to the cartContents div with that information
 }
 
